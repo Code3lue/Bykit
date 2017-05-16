@@ -29,6 +29,15 @@ app.use(bodyParser.json({
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
 
+//////////////////////////////////////////////////////
+//static directory
+app.use(express.static("app/public"));
+
+/////////////////////////////////////////////////////
+//routes
+
+require("./app/routes/html-routes.js")(app);
+require("./app/routes/user-routes.js")(app);
 
 
 
