@@ -1,33 +1,27 @@
+"use strict";
+
 //Dependencies
 /////////////////////////////////////////////////
-var http = require("http")
+//var http = require("http")
 var express = require('express');
+var db = require("./app/models");
 
-var path = require("path")
+//var path = require("path")
 var bodyParser = require('body-parser');
-var methodOverride = require("method-override");
+//var methodOverride = require("method-override");
 
 
 ////////////////////////////////////////////////
 //express app
-
+var PORT = process.env.NODE_ENV || 8080;
 var app = express();
-var PORT = process.env.PORT || 8080;
-
 /////////////////////////////////////////////////
 //express parsing
 
-app.use(express.static(process.cwd() + "/public"));
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(methodOverride("_method"));
-app.use(bodyParser.text());
-app.use(bodyParser.json({
-  type: "application/json"
-}));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname)));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 //////////////////////////////////////////////////////
 //static directory
@@ -36,8 +30,8 @@ app.use(express.static("app/public"));
 /////////////////////////////////////////////////////
 //routes
 
-require("./app/routes/html-routes.js")(app);
-require("./app/routes/user-routes.js")(app);
+//require("./app/routes/html-routes.js")(app);
+//require("./app/routes/user-routes.js")(app);
 
 
 
@@ -45,6 +39,8 @@ require("./app/routes/user-routes.js")(app);
 
 //////////////////////////////////////////////////////
 //app listening
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("Listening on port %s", PORT);
+  });
 });
