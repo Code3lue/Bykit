@@ -4,20 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>test login</title>
-    <style>
-    	#map {
-        	height: 100%;
-    	}
-    	html, body {
-			height: 100%;
-			margin: 0;
-			padding: 0;
-		}
-    </style>
+    <title>Sign Up</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+    
 </head>
 <body>
-    <form action="/action_page.php">
+  <form action="/action_page.php">
   <div class="container">
     <label><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
@@ -27,6 +19,8 @@
 
     <label><b>Select Country</b></label>
     <select>
+		
+    <option value="" disabled selected>Country</option>
 	<option value="AF">Afghanistan</option>
 	<option value="AX">Åland Islands</option>
 	<option value="AL">Albania</option>
@@ -292,43 +286,3 @@
     </div>
   </div>
 </form>
-    <form action="/action_page.php">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-
-  <div class="container">
-    <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-
-    <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Login</button>
-    <input type="checkbox" checked="checked"> Remember me
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
-
-<div id="map"></div>
-    <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 14,
-          center: {lat: 42.3726399, lng: -71.1096528}
-        });
-
-        var bikeLayer = new google.maps.BicyclingLayer();
-        bikeLayer.setMap(map);
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxhkimBc8By2IOKHTmsFA4U4KI9qKI5kU&callback=initMap">
-    </script>
-</body>
-
-</html>

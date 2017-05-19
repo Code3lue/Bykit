@@ -1,12 +1,12 @@
 var db = require("../models");
 
 module.exports = function(app) {
-    app.get("/api/signin/", function(req, res) {
+    app.get("/api/login", function(req, res) {
    db.Test2.find({
-    where: Sequelize.or({ username: desiredUsername }, { email: emailAddress })
+    where: Sequelize.or({ username: username }, { password: password })
 }).success(function (user) {
     if (!user) {
-        db.Test2.create({ username: desiredUsername, email: emailAddress });
+        db.Test2.create({ username: username, password: password });
     }
 });
 res.json(user)

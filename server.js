@@ -6,7 +6,6 @@
 var express = require('express');
 var db = require("./app/models");
 
-//var path = require("path")
 var bodyParser = require('body-parser');
 //var methodOverride = require("method-override");
 
@@ -30,8 +29,8 @@ app.use(express.static("app/public"));
 /////////////////////////////////////////////////////
 //routes
 
-//require("./app/routes/html-routes.js")(app);
-//require("./app/routes/user-routes.js")(app);
+require("./app/routes/html-routes.js")(app);
+require("./app/routes/api-routes.js")(app);
 
 
 
